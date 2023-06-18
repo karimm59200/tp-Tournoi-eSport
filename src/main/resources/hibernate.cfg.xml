@@ -6,7 +6,11 @@
 <hibernate-configuration>
     <session-factory>
 <!--        <mapping class="entities.Produit" />-->
-        <mapping class="com.entities.JeuxVideo" />
+
+        <mapping class="com.example.entities.Joueurs" />
+        <mapping class="com.example.entities.Equipe" />
+        <mapping class="com.example.entities.Utilisateurs" />
+        <mapping class="com.example.entities.Tournoi" />
 
     </session-factory>
 </hibernate-configuration>

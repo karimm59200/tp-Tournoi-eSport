@@ -1,17 +1,14 @@
-package com.example.services;
+package com.example.entities;
 
-import com.example.entities.Equipe;
-import com.example.entities.Joueurs;
-import com.example.entities.Tournoi;
-import com.example.entities.Utilisateurs;
 import com.example.interfaces.Repository;
+import com.example.services.BaseService;
 
 import java.util.List;
 
-public class TournoiService extends BaseService implements Repository<Tournoi> {
+public class UtilisateursService extends BaseService implements Repository<Utilisateurs> {
 
         @Override
-        public boolean create(Tournoi o) {
+        public boolean create(Utilisateurs o) {
             session = sessionFactory.openSession();
             session.beginTransaction();
             session.save(o);
@@ -20,23 +17,18 @@ public class TournoiService extends BaseService implements Repository<Tournoi> {
             return true;
         }
 
-    @Override
-    public boolean create(Utilisateurs o) {
-        return false;
-    }
+        @Override
+        public boolean create(Equipe o) {
+            return false;
+        }
 
-    @Override
-    public boolean create(Equipe o) {
-        return false;
-    }
-
-    @Override
+        @Override
         public boolean create(Joueurs o) {
             return false;
         }
 
         @Override
-        public boolean update(Tournoi o) {
+        public boolean update(Utilisateurs o) {
             session = sessionFactory.openSession();
             session.beginTransaction();
             session.update(o);
@@ -46,7 +38,7 @@ public class TournoiService extends BaseService implements Repository<Tournoi> {
         }
 
         @Override
-        public boolean delete(Tournoi o) {
+        public boolean delete(Utilisateurs o) {
             session = sessionFactory.openSession();
             session.beginTransaction();
             session.delete(o);
@@ -56,20 +48,21 @@ public class TournoiService extends BaseService implements Repository<Tournoi> {
         }
 
         @Override
-        public Tournoi findById(int id) {
-            Tournoi tournoi = null;
+        public Utilisateurs findById(int id) {
+            Utilisateurs utilisateurs = null;
             session = sessionFactory.openSession();
-            tournoi = (Tournoi) session.get(Tournoi.class, id);
+            utilisateurs = (Utilisateurs) session.get(Utilisateurs.class, id);
             session.close();
-            return tournoi;
+            return utilisateurs;
         }
 
         @Override
-        public List<Tournoi> findAll() {
-            List<Tournoi> tournoiList = null;
+        public List<Utilisateurs> findAll() {
+            List<Utilisateurs> utilisateursList = null;
             session = sessionFactory.openSession();
-            tournoiList = session.createQuery("from Tournoi").list();
+            utilisateursList = session.createQuery("from Utilisateurs").list();
             session.close();
-            return tournoiList;
+            return utilisateursList;
         }
+
 }
